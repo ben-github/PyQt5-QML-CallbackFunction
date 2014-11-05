@@ -3,6 +3,7 @@ import sys
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQuick import QQuickView
+from PyQt5.QtQml import QJSValue
 
 class iceController(QObject):
     def __init__(self):
@@ -18,7 +19,7 @@ class iceController(QObject):
     @pyqtSlot(str, 'QJSValue')
     def enqueue(self, command, callback):
         print('Enqueuing function of %s' % command)
-        self.callback = callback
+        self.callback = QJSValue(callback)
         self.dump()
 
     @pyqtSlot()
