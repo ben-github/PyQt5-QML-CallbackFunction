@@ -5,8 +5,6 @@ from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQuick import QQuickView
 from PyQt5.QtQml import QJSValue
 
-import time
-
 
 class IceController(QObject):
     def __init__(self):
@@ -16,7 +14,6 @@ class IceController(QObject):
     def dump(self):
         print("Dump was called")
         for c in self.callback:
-            time.sleep(1)
             c.call([QJSValue("asdf")])
         self.callback[:] = []
 
