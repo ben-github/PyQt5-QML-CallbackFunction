@@ -1,17 +1,28 @@
-function queueMe(response)
-{
-    console.log('!!!!Defined Function Called: ' + response + "\n");
+"use strict";
+/*global print, ice, Array*/
+
+
+function queueMe(response) {
+    print("Defined function called: " + response + "\n");
 }
 
-function onLoad()
-{
-    console.log("onLoad start==================")
+function onLoad() {
+    print("onLoad start");
+    print(new Array(30).join("="));
 
-	ice.enqueue('#version 1', queueMe);
-    ice.enqueue('#test', function test() { console.log('!!!! RAN ME TO ANONYMOUSE');});
-    ice.enqueue('#asdft', function newtest(reply) { console.log('!!!! PASS DATA:    ' + reply + "\n");});
-    console.log("     =========================")
-	ice.processResponses();
+    ice.enqueue("named function", queueMe);
 
-    console.log("onLoad done==================")
+    ice.enqueue("anonymous function", function () {
+        print("!!!! RAN ME TO ANONYMOUSE");
+    });
+
+    ice.enqueue("anonymous function with data", function (reply) {
+        print("Data passed: " + reply);
+    });
+
+    print(new Array(30).join("="));
+    ice.processResponses();
+
+    print("onLoad done");
+    print(new Array(30).join("="));
 }
