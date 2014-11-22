@@ -13,11 +13,11 @@ function onLoad() {
     ice.enqueue("named function", queueMe);
 
     ice.enqueue("anonymous function", function () {
-        print("!!!! RAN ME TO ANONYMOUSE");
+        print("Ran anonymous function.");
     });
 
     ice.enqueue("anonymous function with data", function (reply) {
-        print("Data passed: " + reply);
+        print("Anonymous function with data passed: " + reply);
     });
 
     print(new Array(30).join("="));

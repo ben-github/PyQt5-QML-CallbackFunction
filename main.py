@@ -14,7 +14,7 @@ class IceController(QObject):
     def dump(self):
         print("Dump was called")
         for c in self.callback:
-            c.call([QJSValue("asdf")])
+            c.call([QJSValue("Data from Python")])
         self.callback[:] = []
 
     @pyqtSlot(str, "QJSValue")
